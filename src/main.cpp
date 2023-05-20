@@ -118,8 +118,8 @@ inline bool mqtt_publish(PubSubClient &client, const String &topic, const String
 //-----------------------------------
 void reconnect()
 {
-    visibleWork("DDDDD", colorWiFi, BRIGHT_DAY);
-    strip.show();
+    // visibleWork("DDDDD", colorWiFi, BRIGHT_DAY);
+    // strip.show();
     uint8_t countMqtt = 100;
     while (!client.connect(mqtt_client, mqtt_user, mqtt_pass))
     {
@@ -529,20 +529,15 @@ void bmeHumOut()
 // void dataWrite(uint8_t n, String str)
 // {
 //     data[n].num = str.substring(0, 1).toInt();
-
 //     if (str.indexOf('%') > 0)
 //         data[n].hum = str.substring(str.indexOf('%') + 1, str.indexOf('%') + 3).toInt();
-
 //     if (str.indexOf('*') > 0)
 //         data[n].temp = str.substring(str.indexOf('*') + 1, str.indexOf('*' + 5)).toFloat();
-
 //     if (str.indexOf('$') > 0)
 //         data[n].press = str.substring(str.indexOf('$') + 1, str.indexOf('$') + 4).toInt();
-
 //     if (str.indexOf('^') > 0)
 //         data[n].voltage = str.substring(str.indexOf('^') + 1, str.indexOf('^') + 4).toInt();
 // }
-
 //********************************************************************
 // void parserBuf(String tmp)
 // {
@@ -555,13 +550,11 @@ void bmeHumOut()
 //     //     dataWrite(1, tmp);
 //     // }
 // }
-
 //********************************************************************
 //  визуальные эффекты
 // void show_1()
 // {
 //     strip.clear();
-
 //     for (uint8_t i = 0; i < PIXEL_COUNT / 2; ++i)
 //     {
 //         strip.setPixelColor(i, strip.Color(random(1, 255), random(1, 255), random(1, 255)));
@@ -570,7 +563,6 @@ void bmeHumOut()
 //         delay(5);
 //     }
 //     delay(500);
-
 //     for (uint8_t i = 0; i < PIXEL_COUNT / 2; ++i)
 //     {
 //         strip.setPixelColor(i, 0, 0, 0);
@@ -634,14 +626,13 @@ void loop()
             flagHum = false;
             flagTempOut = false;
             flagHumOut = false;
-
             break;
         }
         case 1:
         {
             if (flagTemp == false)
             {
-                strip.clear();
+                // strip.clear();
                 bmeTemp();
             }
             break;
@@ -650,7 +641,7 @@ void loop()
         {
             if (flagPress == false)
             {
-                strip.clear();
+                // strip.clear();
                 bmePress();
             }
             break;
@@ -659,7 +650,7 @@ void loop()
         {
             if (flagHum == false)
             {
-                strip.clear();
+                // strip.clear();
                 bmeHum();
             }
             break;
@@ -668,7 +659,7 @@ void loop()
         {
             if (flagTempOut == false)
             {
-                strip.clear();
+                // strip.clear();
                 bmeTempOut();
             }
             timeReadOld = millis();
@@ -678,7 +669,7 @@ void loop()
         {
             if (flagHumOut == false)
             {
-                strip.clear();
+                // strip.clear();
                 bmeHumOut();
             }
             break;
